@@ -11,10 +11,9 @@ function Country() {
         let name=flags.filter((flag)=> flag.name.common.toLowerCase().includes(search))
         let flaglist = document.getElementById("mainArea");
         flaglist.innerHTML = name.map((flag) => `<div className="countryCard" id="countryCard" style=display:flex;flex-Direction:column;justify-Content:center;align-Items:center;padding:10px;margin:10px;border:2px;border-style:solid;border-color:#E1E1E1;border-radius:10px;width:200px;height:200px;>
-        <img src=${flag.flags.png} alt=${flag.abbr} style=width:100px;height:100px;/>
+        <img src=${flag.flags.png} alt=${flag.altSpellings[0]} style=width:100px;height:100px;/>
         <h2>${flag.name.common}</h2>
     </div>`).slice(",").join("")
-
     }
     return (
         <>
@@ -38,7 +37,7 @@ function Country() {
             }}>
                 {
                     flags.map((flag) => {
-                        return <CountryCard key={flag.name.common} name={flag.name.common} flagIMG={flag.flags.png} flagAbbr={flag.abbr} /> 
+                        return <CountryCard key={flag.altSpellings[0]} name={flag.name.common} flagIMG={flag.flags.png} flagAbbr={flag.altSpellings[0]} /> 
                     })
                 }
             </div>
