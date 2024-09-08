@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import CountryCard from "./CountryCard"
 function Country() {
     let DATA_ENDPOINT = "https://xcountries-backend.azurewebsites.net/all";
-    // let flags = [1,2,3,4,5,6];
     let [flags, setFlags] = useState([]);
     useEffect(() => {
             fetch(DATA_ENDPOINT)
@@ -12,14 +11,10 @@ function Country() {
     }, []);
     let searchCountry = (e) => {
         const search = e.target.value.toLowerCase();
-        // flagContainer.innerHTML = "";
-        // const filteredCountries = arrFlagData.filter((country) => {
-        //     return country.name.common.toLowerCase().includes(search);
-        // })
         let name=flags.filter((flag)=> flag.name.toLowerCase().includes(search))
         let flaglist = document.getElementById("mainArea");
         flaglist.innerHTML = "";
-        flaglist.innerHTML = name.map((flag) => `<div className="countryCard" style=display:flex;flex-Direction:column;justify-Content:center;align-Items:center;padding:10px;margin:10px;border:2px;border-style:solid;border-color:#E1E1E1;border-radius:10px;width:200px;height:200px;>
+        flaglist.innerHTML = name.map((flag) => `<div className="countryCard" id="countryCard" style=display:flex;flex-Direction:column;justify-Content:center;align-Items:center;padding:10px;margin:10px;border:2px;border-style:solid;border-color:#E1E1E1;border-radius:10px;width:200px;height:200px;>
         <img src=${flag.flag} alt=${flag.abbr} style=width:100px;height:100px;/>
         <h2>${flag.name}</h2>
     </div>`).slice(",").join("")
