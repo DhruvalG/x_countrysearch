@@ -19,10 +19,10 @@ function Country() {
         let name=flags.filter((flag)=> flag.name.toLowerCase().includes(search))
         let flaglist = document.getElementById("mainArea");
         flaglist.innerHTML = "";
-        flaglist.innerHTML = name.map((flag) => `<div className="countryCard" style=display:flex;flex-Direction:column;justify-Content:center;align-Items:center;padding:10px;margin:10px;border:2px;border-style:solid;border-color:#E1E1E1;border-radius:10px;width:200px;height:200px;>
+        flaglist.innerHTML = name.map((flag) => `<CountryCard style=display:flex;flex-Direction:column;justify-Content:center;align-Items:center;padding:10px;margin:10px;border:2px;border-style:solid;border-color:#E1E1E1;border-radius:10px;width:200px;height:200px;>
         <img src=${flag.flag} alt=${flag.abbr} style=width:100px;height:100px;/>
         <h2>${flag.name}</h2>
-    </div>`).slice(",").join("")
+    </CountryCard>`).slice(",").join("")
 
     }
     return (
